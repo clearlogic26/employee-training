@@ -255,6 +255,14 @@
     details.section:nth-of-type(6) { animation-delay: 0.3s; }
     details.section:nth-of-type(7) { animation-delay: 0.36s; }
     details.section:nth-of-type(8) { animation-delay: 0.42s; }
+    details.section:nth-of-type(9) { animation-delay: 0.48s; }
+    details.section:nth-of-type(10) { animation-delay: 0.54s; }
+    details.section:nth-of-type(11) { animation-delay: 0.6s; }
+    details.section:nth-of-type(12) { animation-delay: 0.66s; }
+    details.section:nth-of-type(13) { animation-delay: 0.72s; }
+    details.section:nth-of-type(14) { animation-delay: 0.78s; }
+    details.section:nth-of-type(15) { animation-delay: 0.84s; }
+    details.section:nth-of-type(16) { animation-delay: 0.9s; }
 
     @keyframes rise {
       to {
@@ -641,6 +649,14 @@
       <a href="#opening">Opening</a>
       <a href="#closing">Closing</a>
       <a href="#service">Service</a>
+      <a href="#phone">Phone Policy</a>
+      <a href="#dress-code">Dress Code</a>
+      <a href="#breaks">Breaks</a>
+      <a href="#cash-register">Cash Register</a>
+      <a href="#inventory-cups">Inventory &amp; Cups</a>
+      <a href="#bathroom">Bathroom</a>
+      <a href="#belongings">Belongings</a>
+      <a href="#employee-drinks">Employee Drinks</a>
       <a href="#faq">FAQ</a>
       <a href="#quiz">Quiz</a>
     </nav>
@@ -951,9 +967,94 @@
         </div>
       </details>
 
+      <details class="section" id="dress-code">
+        <summary>
+          <span class="summary-copy">8. Dress Code <small>Arrive ready for the shift</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <ul class="list">
+            <li>PWI shirt is required at all times. If you arrive without your shirt, you will be given one at a cost of $20.</li>
+            <li>Sneakers are required for safety and hygiene.</li>
+            <li>Pants or shorts must be clean and presentable.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="section" id="breaks">
+        <summary>
+          <span class="summary-copy">9. Breaks <small>Follow break rules exactly</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <ul class="list">
+            <li>4 to 6 hour shift: No break.</li>
+            <li>No breaks between 7 PM and 12 AM. No exceptions.</li>
+            <li>Always ask your shift manager before taking a break.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="section" id="cash-register">
+        <summary>
+          <span class="summary-copy">10. Cash Register <small>Write mistakes down and tell the manager</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <p class="section-copy">If you make a mistake on the register, do not try to fix it yourself. Write it down in the provided notebook and let the manager know.</p>
+        </div>
+      </details>
+
+      <details class="section" id="inventory-cups">
+        <summary>
+          <span class="summary-copy">11. Inventory &amp; Cups <small>Protect inventory and record damage</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <ul class="list">
+            <li>Never throw away cups. Wash them.</li>
+            <li>Damaged cups must be kept and marked down in the provided notebook.</li>
+            <li>Extra cups for customers: use blank cups only, never PWI logo cups.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="section" id="bathroom">
+        <summary>
+          <span class="summary-copy">12. Bathroom <small>Restroom access policy for customers</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <ul class="list">
+            <li>Only employees are allowed behind the counter.</li>
+            <li>If a customer asks to use the restroom, say: "I am sorry but we do not have public restrooms."</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="section" id="belongings">
+        <summary>
+          <span class="summary-copy">13. Personal Belongings <small>Keep personal items out of the work area</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <p class="section-copy">All personal belongings should be kept in the back of the store.</p>
+        </div>
+      </details>
+
+      <details class="section" id="employee-drinks">
+        <summary>
+          <span class="summary-copy">14. Employee Drinks <small>Pay right away for staff soda</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <p class="section-copy">Employees may purchase soda at $2.00. Payment must be made immediately.</p>
+        </div>
+      </details>
+
       <details class="section" id="faq">
         <summary>
-          <span class="summary-copy">8. Common Questions <small>Quick answers for frequent customer questions</small></span>
+          <span class="summary-copy">15. Common Questions <small>Quick answers for frequent customer questions</small></span>
           <span class="summary-icon" aria-hidden="true">+</span>
         </summary>
         <div class="section-body">
@@ -988,15 +1089,15 @@
 
       <details class="section" id="quiz">
         <summary>
-          <span class="summary-copy">9. Quick Quiz <small>Pass with 80% or higher</small></span>
+          <span class="summary-copy">16. Quick Quiz <small>Pass with 80% or higher</small></span>
           <span class="summary-icon" aria-hidden="true">+</span>
         </summary>
         <div class="section-body">
-          <p class="section-copy">Use this quiz to test your product knowledge before your first shift. You need at least 8 out of 10 correct to pass.</p>
+          <p class="section-copy">Use this quiz to test your training knowledge before your first shift. You need at least 80% correct to pass.</p>
           <div class="quiz-shell">
             <article class="quiz-card" id="quizCard">
               <div class="quiz-progress">
-                <span id="questionCounter">Question 1 of 10</span>
+                <span id="questionCounter">Question 1 of 14</span>
                 <span id="scoreCounter">Score: 0</span>
               </div>
               <div class="progress-bar" aria-hidden="true">
@@ -1028,14 +1129,9 @@
   <script>
     const quizData = [
       {
-        question: "What is the #1 selling PWI flavor?",
-        choices: ["Cherry", "Cotton Candy", "Mango", "Blue Raspberry"],
-        answer: "Cotton Candy"
-      },
-      {
-        question: "How many PWI flavors do we have?",
-        choices: ["7", "8", "9", "10"],
-        answer: "9"
+        question: "How many Wildwood locations are listed in this guide?",
+        choices: ["2", "3", "4", "5"],
+        answer: "3"
       },
       {
         question: "What is a Polish Freeze?",
@@ -1048,49 +1144,39 @@
         answer: "Water ice and ice cream side by side"
       },
       {
-        question: "Can customers mix 2 PWI flavors?",
-        choices: ["No, only one flavor per cup", "Yes", "Only in large cups", "Only with manager approval"],
-        answer: "Yes"
-      },
-      {
-        question: "What is a Chiller?",
-        choices: [
-          "Frozen soda with water ice",
-          "Blended ice cream with candy mix-ins",
-          "A dairy-free fruit smoothie",
-          "A layered Polish Freeze"
-        ],
-        answer: "Blended ice cream with candy mix-ins"
-      },
-      {
         question: "How much is a large PWI?",
         choices: ["$7.25", "$7.50", "$7.75", "$8.25"],
         answer: "$7.75"
       },
       {
-        question: "What sizes do Milkshakes come in?",
-        choices: ["Kid and Regular", "Small and Medium", "Medium and Large", "Small and Large"],
-        answer: "Small and Large"
-      },
-      {
-        question: "Is PWI dairy-free?",
-        choices: ["Yes", "No", "Only some flavors", "Only if mixed with water"],
-        answer: "Yes"
-      },
-      {
-        question: "How much is a waffle cone?",
-        choices: ["$6.25", "$6.75", "$7.25", "$7.75"],
-        answer: "$7.25"
-      },
-      {
-        question: "What soda options do we have for Ice Caps?",
+        question: "What should you do before the first customers arrive at opening?",
         choices: [
-          "Pepsi, Diet Pepsi, Starry, Mountain Dew, Ginger Ale, Orange Crush, Root Beer, Gatorade",
-          "Only Pepsi and Diet Pepsi",
-          "Pepsi, Sprite, Coke, Orange Soda",
-          "Any fountain soda except Gatorade"
+          "Count the register and lock up",
+          "Turn on the lights, clock in, turn on the machines, and stir Piña Colada, Mango, and Chocolate",
+          "Only wipe down the counters",
+          "Take inventory and then check your phone"
         ],
-        answer: "Pepsi, Diet Pepsi, Starry, Mountain Dew, Ginger Ale, Orange Crush, Root Beer, Gatorade"
+        answer: "Turn on the lights, clock in, turn on the machines, and stir Piña Colada, Mango, and Chocolate"
+      },
+      {
+        question: "Which of these is part of the closing checklist?",
+        choices: [
+          "Leave the machines on overnight",
+          "Empty trash cans and lock up before leaving",
+          "Only clean the front counter",
+          "Skip counting the register if it was a slow night"
+        ],
+        answer: "Empty trash cans and lock up before leaving"
+      },
+      {
+        question: "If you do not know an answer for a customer, what should you do?",
+        choices: [
+          "Guess quickly so the line keeps moving",
+          "Ask the manager",
+          "Tell the customer to come back later",
+          "Ignore the question"
+        ],
+        answer: "Ask the manager"
       },
       {
         question: "Someone is looking toward the store. What should you do?",
@@ -1101,6 +1187,76 @@
           "Check your phone first, then greet them"
         ],
         answer: "Make eye contact and greet them right away"
+      },
+      {
+        question: "What is required if you arrive without your PWI shirt?",
+        choices: [
+          "You may work without one for the day",
+          "You will be sent home immediately",
+          "You will be given one and charged $20",
+          "You can borrow one for free"
+        ],
+        answer: "You will be given one and charged $20"
+      },
+      {
+        question: "What is the break policy for a 4 to 6 hour shift?",
+        choices: ["One 15-minute break", "One 30-minute break", "No break", "Break only after 7 PM"],
+        answer: "No break"
+      },
+      {
+        question: "If you make a mistake on the register, what should you do?",
+        choices: [
+          "Fix it yourself right away",
+          "Ignore it if the drawer balances later",
+          "Write it in the notebook and tell the manager",
+          "Ask a coworker to change the transaction"
+        ],
+        answer: "Write it in the notebook and tell the manager"
+      },
+      {
+        question: "What should you do with damaged cups?",
+        choices: [
+          "Throw them away immediately",
+          "Keep them and mark them down in the notebook",
+          "Use them for employee drinks",
+          "Hide them in the storage area"
+        ],
+        answer: "Keep them and mark them down in the notebook"
+      },
+      {
+        question: "If a customer asks to use the restroom, what should you say?",
+        choices: [
+          "The restroom is behind the counter",
+          "Only if they buy something first",
+          "I am sorry but we do not have public restrooms.",
+          "Ask another employee"
+        ],
+        answer: "I am sorry but we do not have public restrooms."
+      },
+      {
+        question: "Where should personal belongings be kept?",
+        choices: ["Under the front counter", "In the back of the store", "Next to the register", "On a shelf in view of customers"],
+        answer: "In the back of the store"
+      },
+      {
+        question: "How much can employees purchase soda for, and when must they pay?",
+        choices: [
+          "$1.00 at the end of the shift",
+          "$2.00 immediately",
+          "$2.50 during break only",
+          "Free if approved by a manager"
+        ],
+        answer: "$2.00 immediately"
+      },
+      {
+        question: "Which items are dairy-free according to the guide?",
+        choices: [
+          "PWI, Slushie, and Ice Cap",
+          "Ice cream, Float, and Milkshake",
+          "Chiller and Polish Freeze",
+          "Only Lemon PWI"
+        ],
+        answer: "PWI, Slushie, and Ice Cap"
       }
     ];
 
