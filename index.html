@@ -344,6 +344,23 @@
       font-size: 1rem;
     }
 
+    .product-photos {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .product-photos img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      flex-shrink: 0;
+    }
+
     .card p,
     .card li,
     .table-card p,
@@ -664,6 +681,11 @@
             <article class="card">
               <h3>PWI (Polish Water Ice)</h3>
               <p>Frozen fruit-flavored ice eaten with a spoon. Guests can mix any 2 flavors in one cup. Cotton Candy is the top seller.</p>
+              <div class="product-photos">
+                <img src="images/water-ice-orange.png" alt="Water ice orange">
+                <img src="images/water-ice-blue.png" alt="Water ice blue">
+                <img src="images/water-ice-swirl.png" alt="Water ice swirl">
+              </div>
               <div class="tag-row">
                 <span class="tag">Cherry</span>
                 <span class="tag">Blue Raspberry</span>
@@ -679,10 +701,20 @@
             <article class="card">
               <h3>Polish Freeze</h3>
               <p>Combo cup with water ice on one side and ice cream on the other, similar to a gelati. Uses the same 9 PWI flavors plus ice cream.</p>
+              <div class="product-photos">
+                <img src="images/freeze-orange.png" alt="Polish Freeze orange">
+                <img src="images/freeze-blue.png" alt="Polish Freeze blue">
+                <img src="images/freeze-mango.png" alt="Polish Freeze mango">
+              </div>
             </article>
             <article class="card">
               <h3>Chiller</h3>
               <p>Blended ice cream dessert, similar to a DQ Blizzard. Bases are vanilla, chocolate, or twist.</p>
+              <div class="product-photos">
+                <img src="images/chiller-oreo.png" alt="Chiller Oreo">
+                <img src="images/chiller-mm.png" alt="Chiller M&Ms">
+                <img src="images/chiller-cookie.png" alt="Chiller Cookie">
+              </div>
               <div class="tag-row">
                 <span class="tag">Oreo</span>
                 <span class="tag">M&amp;Ms</span>
@@ -695,6 +727,11 @@
             <article class="card">
               <h3>Milkshake</h3>
               <p>Classic blended shake in small or large.</p>
+              <div class="product-photos">
+                <img src="images/milkshake-vanilla.png" alt="Vanilla milkshake">
+                <img src="images/milkshake-strawberry.png" alt="Strawberry milkshake">
+                <img src="images/milkshake-chocolate.png" alt="Chocolate milkshake">
+              </div>
               <div class="tag-row">
                 <span class="tag">Cookies &amp; Cream</span>
                 <span class="tag">Vanilla</span>
@@ -714,14 +751,26 @@
             <article class="card">
               <h3>Ice Cream</h3>
               <p>Soft serve in chocolate, vanilla, or twist. Served in a cup, regular cone, or waffle cone. Sprinkles are an add-on.</p>
+              <div class="product-photos">
+                <img src="images/ice-cream-swirl.png" alt="Ice cream swirl">
+                <img src="images/ice-cream-cup.png" alt="Ice cream cup">
+              </div>
             </article>
             <article class="card">
               <h3>Slushie</h3>
               <p>Any PWI flavor blended with a little water. It is the drinkable version of water ice.</p>
+              <div class="product-photos">
+                <img src="images/slushie-blue.png" alt="Blue slushie">
+                <img src="images/slushie-mango.png" alt="Mango slushie">
+              </div>
             </article>
             <article class="card">
               <h3>Ice Cap</h3>
               <p>Water ice float made with any PWI flavor plus a soda choice.</p>
+              <div class="product-photos">
+                <img src="images/ice-cap-orange.png" alt="Ice Cap orange">
+                <img src="images/ice-cap-blue.png" alt="Ice Cap blue">
+              </div>
               <div class="tag-row">
                 <span class="tag">Pepsi</span>
                 <span class="tag">Diet Pepsi</span>
@@ -736,10 +785,18 @@
             <article class="card">
               <h3>Float</h3>
               <p>Classic float made with ice cream and soda.</p>
+              <div class="product-photos">
+                <img src="images/float-rootbeer.png" alt="Root beer float">
+              </div>
             </article>
             <article class="card">
               <h3>Beverages</h3>
               <p>We also sell bottled water, soda, and Gatorade for guests who want a simple drink.</p>
+              <div class="product-photos">
+                <img src="images/aquafina.png" alt="Aquafina water">
+                <img src="images/pepsi.png" alt="Pepsi">
+                <img src="images/gatorade.png" alt="Gatorade">
+              </div>
             </article>
           </div>
         </div>
