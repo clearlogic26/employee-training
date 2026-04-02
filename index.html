@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWI Employee Training Guide</title>
+  <style>
+    :root {
+      --bg: #09111f;
+      --bg-alt: #111b31;
+      --panel: rgba(15, 27, 49, 0.88);
+      --panel-strong: rgba(22, 37, 67, 0.96);
+      --border: rgba(142, 180, 255, 0.2);
+      --text: #eff6ff;
+      --muted: #a7bbde;
+      --brand-a: #3f7cff;
+      --brand-b: #7c4dff;
+      --accent: #5ce0ff;
+      --success: #65e39b;
+      --danger: #ff7e98;
+      --warning: #ffd166;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max-width: 1100px;
+      --font-body: "Trebuchet MS", "Segoe UI", sans-serif;
+      --font-display: "Arial Black", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(92, 224, 255, 0.18), transparent 32%),
+        linear-gradient(180deg, #040913 0%, #09111f 36%, #0b1325 100%);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 100%;
+      height: 140px;
+      left: 0;
+      bottom: 0;
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(9, 17, 31, 0.2) 25%, rgba(9, 17, 31, 0.95) 100%),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 209, 102, 0.16) 0 32px,
+          rgba(255, 255, 255, 0.05) 32px 34px
+        );
+      opacity: 0.7;
+    }
+
+    body::after {
+      width: 260px;
+      height: 260px;
+      right: -60px;
+      top: 18%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 77, 255, 0.22) 0%, rgba(124, 77, 255, 0) 70%);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max-width), calc(100% - 24px));
+      margin: 0 auto;
+      padding: 20px 0 48px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 28px 20px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(63, 124, 255, 0.96), rgba(124, 77, 255, 0.92)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -70px -45px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      top: -25px;
+      width: 140px;
+      height: 140px;
+      border-radius: 24px;
+      transform: rotate(25deg);
+      background: rgba(92, 224, 255, 0.13);
+    }
+
+    .brand-row,
+    .location-list,
+    .hero-stats,
+    .card-grid,
+    .price-grid,
+    .faq-list,
+    .quiz-choices,
+    .quiz-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .brand-row {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .logo-mark {
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: rgba(255, 255, 255, 0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3,
+    summary {
+      margin: 0;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 0.98;
+      letter-spacing: 0.02em;
+    }
+
+    .hero p,
+    .hero li,
+    .section-copy,
+    .faq-answer,
+    .quiz-feedback,
+    .score-copy {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+
+    .hero-subtitle {
+      margin: 12px 0 18px;
+      max-width: 42rem;
+      font-size: 1rem;
+    }
+
+    .location-list,
+    .hero-stats {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .chip,
+    .stat,
+    .tag {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.92rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 2px;
+      color: #fff;
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 14px 2px 4px;
+      margin-bottom: 18px;
+      scrollbar-width: thin;
+    }
+
+    .top-nav a {
+      flex: 0 0 auto;
+      padding: 10px 14px;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(9, 17, 31, 0.65);
+      backdrop-filter: blur(12px);
+    }
+
+    .content {
+      display: grid;
+      gap: 16px;
+    }
+
+    details.section {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: translateY(14px);
+      opacity: 0;
+      animation: rise 0.6s ease forwards;
+    }
+
+    details.section:nth-of-type(2) { animation-delay: 0.06s; }
+    details.section:nth-of-type(3) { animation-delay: 0.12s; }
+    details.section:nth-of-type(4) { animation-delay: 0.18s; }
+    details.section:nth-of-type(5) { animation-delay: 0.24s; }
+    details.section:nth-of-type(6) { animation-delay: 0.3s; }
+    details.section:nth-of-type(7) { animation-delay: 0.36s; }
+    details.section:nth-of-type(8) { animation-delay: 0.42s; }
+
+    @keyframes rise {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 18px 18px 20px;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .summary-copy small {
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: normal;
+    }
+
+    .summary-icon {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(92, 224, 255, 0.12);
+      color: var(--accent);
+      font-size: 1.2rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    details[open] .summary-icon {
+      transform: rotate(45deg);
+      background: rgba(92, 224, 255, 0.22);
+    }
+
+    .section-body {
+      padding: 0 18px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-copy {
+      margin: 16px 0 0;
+    }
+
+    .card-grid {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card,
+    .table-card,
+    .faq-item,
+    .quiz-card,
+    .score-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      background: var(--panel-strong);
+      padding: 16px;
+    }
+
+    .card h3,
+    .table-card h3,
+    .quiz-card h3,
+    .score-card h3 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .card p,
+    .card li,
+    .table-card p,
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .card .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      font-size: 0.82rem;
+      color: #fff;
+    }
+
+    .list {
+      margin: 18px 0 0;
+      padding-left: 20px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .list li + li {
+      margin-top: 8px;
+    }
+
+    .price-grid {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    .price-table th,
+    .price-table td {
+      text-align: left;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .price-table th {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .price-note {
+      margin-top: 12px;
+      color: var(--warning);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .faq-list {
+      margin-top: 18px;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .faq-answer {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .quiz-shell {
+      margin-top: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .quiz-progress {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--brand-b));
+      transition: width 0.25s ease;
+    }
+
+    .quiz-question {
+      font-size: 1.1rem;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+
+    .quiz-choices {
+      grid-template-columns: 1fr;
+    }
+
+    .choice-btn,
+    .action-btn {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .choice-btn:hover,
+    .choice-btn:focus-visible,
+    .action-btn:hover,
+    .action-btn:focus-visible,
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      outline: none;
+      transform: translateY(-1px);
+      border-color: rgba(92, 224, 255, 0.52);
+      background: rgba(92, 224, 255, 0.1);
+    }
+
+    .choice-btn.correct {
+      border-color: rgba(101, 227, 155, 0.6);
+      background: rgba(101, 227, 155, 0.14);
+    }
+
+    .choice-btn.incorrect {
+      border-color: rgba(255, 126, 152, 0.6);
+      background: rgba(255, 126, 152, 0.14);
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+      transform: none;
+    }
+
+    .quiz-feedback {
+      min-height: 24px;
+      margin: 14px 0 0;
+      font-weight: 700;
+    }
+
+    .quiz-feedback.correct {
+      color: var(--success);
+    }
+
+    .quiz-feedback.incorrect {
+      color: var(--danger);
+    }
+
+    .quiz-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .action-btn.primary {
+      background: linear-gradient(135deg, rgba(63, 124, 255, 0.92), rgba(124, 77, 255, 0.88));
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .action-btn.secondary {
+      color: var(--muted);
+    }
+
+    .action-btn[hidden],
+    .score-card[hidden] {
+      display: none;
+    }
+
+    .score-card {
+      text-align: center;
+    }
+
+    .score-number {
+      display: inline-block;
+      margin: 10px 0 12px;
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 10vw, 3.8rem);
+      line-height: 1;
+    }
+
+    .score-number.pass {
+      color: var(--success);
+    }
+
+    .score-number.fail {
+      color: var(--danger);
+    }
+
+    .score-copy {
+      margin: 0 auto 18px;
+      max-width: 32rem;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 700px) {
+      .page {
+        width: min(var(--max-width), calc(100% - 40px));
+        padding-top: 26px;
+      }
+
+      .hero {
+        padding: 34px 30px 28px;
+      }
+
+      summary {
+        padding-inline: 24px;
+      }
+
+      .section-body {
+        padding: 0 24px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero" id="top">
+      <div class="brand-row">
+        <div class="logo-mark" aria-hidden="true">PWI</div>
+        <div>
+          <p class="eyebrow">Employee Training Guide</p>
+          <h1>Polish Water Ice Boardwalk Prep</h1>
+        </div>
+      </div>
+      <p class="hero-subtitle">Welcome to the PWI Team! This guide covers everything you need to know before your first shift.</p>
+      <div class="location-list" aria-label="PWI locations">
+        <div class="chip">2708 Boardwalk</div>
+        <div class="chip">3500 Boardwalk</div>
+        <div class="chip">3808 Boardwalk</div>
+        <div class="chip">4204 Boardwalk</div>
+      </div>
+      <div class="hero-stats" aria-label="Quick facts">
+        <div class="stat"><strong>4</strong> Wildwood locations</div>
+        <div class="stat"><strong>9</strong> PWI flavors</div>
+        <div class="stat"><strong>#1</strong> Seller: Cotton Candy</div>
+      </div>
+    </header>
+
+    <nav class="top-nav" aria-label="Section navigation">
+      <a href="#welcome">Welcome</a>
+      <a href="#products">Products</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#opening">Opening</a>
+      <a href="#closing">Closing</a>
+      <a href="#service">Service</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+
+    <section class="content">
+      <details class="section" id="welcome" open>
+        <summary>
+          <span class="summary-copy">1. Welcome <small>Start here before your first shift</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <p class="section-copy">PWI is a fast-moving frozen dessert shop on the Wildwood Boardwalk. Your job is to keep service quick, accurate, and friendly while helping guests choose from water ice, soft serve, chillers, shakes, floats, and drinks.</p>
+          <div class="card-grid">
+            <article class="card">
+              <h3>What matters most</h3>
+              <p>Be friendly, stay clean, move with purpose, and double-check every order before handing it out.</p>
+            </article>
+            <article class="card">
+              <h3>Boardwalk mindset</h3>
+              <p>Summer nights get busy fast. Calm communication and smooth teamwork keep the line moving.</p>
+            </article>
+            <article class="card">
+              <h3>Before day one</h3>
+              <p>Study the products, prices, and quiz so you can start your first shift with the basics locked in.</p>
+            </article>
+          </div>
+        </div>
+      </details>
+
+      <details class="section" id="products">
+        <summary>
+          <span class="summary-copy">2. Our Products <small>Know what every item is before you serve it</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <p class="section-copy">Guests often ask for descriptions, flavor help, and combo suggestions. Learn these definitions so you can explain them fast and confidently.</p>
+          <div class="card-grid">
+            <article class="card">
+              <h3>PWI (Polish Water Ice)</h3>
+              <p>Frozen fruit-flavored ice eaten with a spoon. Guests can mix any 2 flavors in one cup. Cotton Candy is the top seller.</p>
+              <div class="tag-row">
+                <span class="tag">Cherry</span>
+                <span class="tag">Blue Raspberry</span>
+                <span class="tag">Cotton Candy</span>
+                <span class="tag">Watermelon</span>
+                <span class="tag">Mango</span>
+                <span class="tag">Piña Colada</span>
+                <span class="tag">Chocolate</span>
+                <span class="tag">Lemon</span>
+                <span class="tag">Green Apple</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Polish Freeze</h3>
+              <p>Combo cup with water ice on one side and ice cream on the other, similar to a gelati. Uses the same 9 PWI flavors plus ice cream.</p>
+            </article>
+            <article class="card">
+              <h3>Chiller</h3>
+              <p>Blended ice cream dessert, similar to a DQ Blizzard. Bases are vanilla, chocolate, or twist.</p>
+              <div class="tag-row">
+                <span class="tag">Oreo</span>
+                <span class="tag">M&amp;Ms</span>
+                <span class="tag">Reeses PB Cups</span>
+                <span class="tag">Snickers</span>
+                <span class="tag">Reeses Pieces</span>
+                <span class="tag">Butterfinger</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Milkshake</h3>
+              <p>Classic blended shake in small or large.</p>
+              <div class="tag-row">
+                <span class="tag">Cookies &amp; Cream</span>
+                <span class="tag">Vanilla</span>
+                <span class="tag">Chocolate</span>
+                <span class="tag">Black &amp; White</span>
+                <span class="tag">Strawberry</span>
+                <span class="tag">Banana</span>
+                <span class="tag">Root Beer</span>
+                <span class="tag">Cherry</span>
+                <span class="tag">Blue Raspberry</span>
+                <span class="tag">Watermelon</span>
+                <span class="tag">Cotton Candy</span>
+                <span class="tag">Mango</span>
+                <span class="tag">Piña Colada</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Ice Cream</h3>
+              <p>Soft serve in chocolate, vanilla, or twist. Served in a cup, regular cone, or waffle cone. Sprinkles are an add-on.</p>
+            </article>
+            <article class="card">
+              <h3>Slushie</h3>
+              <p>Any PWI flavor blended with a little water. It is the drinkable version of water ice.</p>
+            </article>
+            <article class="card">
+              <h3>Ice Cap</h3>
+              <p>Water ice float made with any PWI flavor plus a soda choice.</p>
+              <div class="tag-row">
+                <span class="tag">Pepsi</span>
+                <span class="tag">Diet Pepsi</span>
+                <span class="tag">Starry</span>
+                <span class="tag">Mountain Dew</span>
+                <span class="tag">Ginger Ale</span>
+                <span class="tag">Orange Crush</span>
+                <span class="tag">Root Beer</span>
+                <span class="tag">Gatorade</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Float</h3>
+              <p>Classic float made with ice cream and soda.</p>
+            </article>
+            <article class="card">
+              <h3>Beverages</h3>
+              <p>We also sell bottled water, soda, and Gatorade for guests who want a simple drink.</p>
+            </article>
+          </div>
+        </div>
+      </details>
+
+      <details class="section" id="pricing">
+        <summary>
+          <span class="summary-copy">3. Pricing <small>After-tax totals customers pay</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <p class="section-copy">These prices already include the 8.625% New Jersey sales tax. Quote these totals when customers ask what they will pay.</p>
+          <div class="price-grid">
+            <article class="table-card">
+              <h3>PWI / Ice Cream Cup</h3>
+              <table class="price-table">
+                <tbody>
+                  <tr><th>Small</th><td>$6.25</td></tr>
+                  <tr><th>Medium</th><td>$7.00</td></tr>
+                  <tr><th>Large</th><td>$7.75</td></tr>
+                  <tr><th>Quart</th><td>$14.00</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="table-card">
+              <h3>Polish Freeze</h3>
+              <table class="price-table">
+                <tbody>
+                  <tr><th>Small</th><td>$6.75</td></tr>
+                  <tr><th>Medium</th><td>$7.50</td></tr>
+                  <tr><th>Large</th><td>$8.25</td></tr>
+                  <tr><th>Quart</th><td>$15.00</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="table-card">
+              <h3>Cones</h3>
+              <table class="price-table">
+                <tbody>
+                  <tr><th>Regular Cone</th><td>$6.25</td></tr>
+                  <tr><th>Waffle Cone</th><td>$7.25</td></tr>
+                  <tr><th>Sprinkles Add-On</th><td>+$0.75</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="table-card">
+              <h3>Milkshake / Slushie / Ice Cap / Float</h3>
+              <table class="price-table">
+                <tbody>
+                  <tr><th>Small</th><td>$8.50</td></tr>
+                  <tr><th>Large</th><td>$9.50</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="table-card">
+              <h3>Chiller</h3>
+              <table class="price-table">
+                <tbody>
+                  <tr><th>Small</th><td>$8.50</td></tr>
+                  <tr><th>Large</th><td>$9.50</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="table-card">
+              <h3>Beverages</h3>
+              <table class="price-table">
+                <tbody>
+                  <tr><th>Water</th><td>$3.25</td></tr>
+                  <tr><th>Soda</th><td>$3.50</td></tr>
+                  <tr><th>Gatorade</th><td>$3.75</td></tr>
+                </tbody>
+              </table>
+              <p class="price-note">Sales tax is already included in every price above.</p>
+            </article>
+          </div>
+        </div>
+      </details>
+
+      <details class="section" id="opening">
+        <summary>
+          <span class="summary-copy">4. Opening Checklist <small>Use this before the first customers arrive</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <ul class="list">
+            <li>Turn on all machines, including the soft serve machine and blender.</li>
+            <li>Check that all flavor tubs are stocked and ready to scoop.</li>
+            <li>Restock cups, lids, spoons, straws, and napkins.</li>
+            <li>Clean all surfaces and the prep area.</li>
+            <li>Make sure the register has the correct change.</li>
+            <li>Turn on lights and signage.</li>
+            <li>Check soda supply before the rush starts.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="section" id="closing">
+        <summary>
+          <span class="summary-copy">5. Closing Checklist <small>Reset the shop for the next day</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <ul class="list">
+            <li>Clean all machines thoroughly.</li>
+            <li>Wipe down all surfaces.</li>
+            <li>Restock supplies for the next day.</li>
+            <li>Empty trash cans.</li>
+            <li>Count the register and secure cash.</li>
+            <li>Turn off all machines and lights.</li>
+            <li>Lock up before leaving.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="section" id="service">
+        <summary>
+          <span class="summary-copy">6. Customer Service Tips <small>Fast, friendly, accurate service</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <ul class="list">
+            <li>Always greet customers with a smile.</li>
+            <li>If you do not know an answer, ask the manager. Do not guess.</li>
+            <li>Repeat the order back before making it.</li>
+            <li>Speed matters on busy nights because the boardwalk line moves fast.</li>
+            <li>Keep your station clean between orders.</li>
+            <li>Suggest popular combos like: “Want to try our Polish Freeze? It’s our water ice and ice cream together!”</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="section" id="faq">
+        <summary>
+          <span class="summary-copy">7. Common Questions <small>Quick answers for frequent customer questions</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <div class="faq-list">
+            <article class="faq-item">
+              <h3>“What’s the difference between water ice and ice cream?”</h3>
+              <p class="faq-answer">Water ice is a dairy-free, fruit-flavored frozen treat eaten with a spoon. Ice cream is soft serve.</p>
+            </article>
+            <article class="faq-item">
+              <h3>“Can I mix flavors?”</h3>
+              <p class="faq-answer">Yes. Guests can mix any 2 PWI flavors in one cup.</p>
+            </article>
+            <article class="faq-item">
+              <h3>“What’s a Polish Freeze?”</h3>
+              <p class="faq-answer">It is a combo cup with water ice on one side and ice cream on the other.</p>
+            </article>
+            <article class="faq-item">
+              <h3>“What’s a Chiller?”</h3>
+              <p class="faq-answer">A Chiller is blended ice cream with candy mix-ins, similar to a DQ Blizzard.</p>
+            </article>
+            <article class="faq-item">
+              <h3>“Is water ice dairy-free?”</h3>
+              <p class="faq-answer">Yes. PWI, Slushie, and Ice Cap are all dairy-free.</p>
+            </article>
+            <article class="faq-item">
+              <h3>“What’s your most popular flavor?”</h3>
+              <p class="faq-answer">Cotton Candy is the #1 selling PWI flavor.</p>
+            </article>
+          </div>
+        </div>
+      </details>
+
+      <details class="section" id="quiz">
+        <summary>
+          <span class="summary-copy">8. Quick Quiz <small>Pass with 80% or higher</small></span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="section-body">
+          <p class="section-copy">Use this quiz to test your product knowledge before your first shift. You need at least 8 out of 10 correct to pass.</p>
+          <div class="quiz-shell">
+            <article class="quiz-card" id="quizCard">
+              <div class="quiz-progress">
+                <span id="questionCounter">Question 1 of 10</span>
+                <span id="scoreCounter">Score: 0</span>
+              </div>
+              <div class="progress-bar" aria-hidden="true">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <h3 class="quiz-question" id="questionText"></h3>
+              <div class="quiz-choices" id="choicesContainer"></div>
+              <p class="quiz-feedback" id="feedback" aria-live="polite"></p>
+              <div class="quiz-actions">
+                <button class="action-btn secondary" id="restartBtn" type="button">Retake Quiz</button>
+                <button class="action-btn primary" id="nextBtn" type="button" hidden>Next Question</button>
+              </div>
+            </article>
+
+            <article class="score-card" id="scoreCard" hidden>
+              <h3>Quiz Complete</h3>
+              <div class="score-number" id="scoreNumber">0%</div>
+              <p class="score-copy" id="scoreCopy"></p>
+              <button class="action-btn primary" id="retakeBtn" type="button">Retake Quiz</button>
+            </article>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <p class="footer-note">PWI Employee Training Guide for Wildwood Boardwalk locations.</p>
+  </main>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is the #1 selling PWI flavor?",
+        choices: ["Cherry", "Cotton Candy", "Mango", "Blue Raspberry"],
+        answer: "Cotton Candy"
+      },
+      {
+        question: "How many PWI flavors do we have?",
+        choices: ["7", "8", "9", "10"],
+        answer: "9"
+      },
+      {
+        question: "What is a Polish Freeze?",
+        choices: [
+          "Water ice blended with soda",
+          "Water ice and ice cream side by side",
+          "A milkshake with water ice flavoring",
+          "Soft serve topped with candy"
+        ],
+        answer: "Water ice and ice cream side by side"
+      },
+      {
+        question: "Can customers mix 2 PWI flavors?",
+        choices: ["No, only one flavor per cup", "Yes", "Only in large cups", "Only with manager approval"],
+        answer: "Yes"
+      },
+      {
+        question: "What is a Chiller?",
+        choices: [
+          "Frozen soda with water ice",
+          "Blended ice cream with candy mix-ins",
+          "A dairy-free fruit smoothie",
+          "A layered Polish Freeze"
+        ],
+        answer: "Blended ice cream with candy mix-ins"
+      },
+      {
+        question: "How much is a large PWI?",
+        choices: ["$7.25", "$7.50", "$7.75", "$8.25"],
+        answer: "$7.75"
+      },
+      {
+        question: "What sizes do Milkshakes come in?",
+        choices: ["Kid and Regular", "Small and Medium", "Medium and Large", "Small and Large"],
+        answer: "Small and Large"
+      },
+      {
+        question: "Is PWI dairy-free?",
+        choices: ["Yes", "No", "Only some flavors", "Only if mixed with water"],
+        answer: "Yes"
+      },
+      {
+        question: "How much is a waffle cone?",
+        choices: ["$6.25", "$6.75", "$7.25", "$7.75"],
+        answer: "$7.25"
+      },
+      {
+        question: "What soda options do we have for Ice Caps?",
+        choices: [
+          "Pepsi, Diet Pepsi, Starry, Mountain Dew, Ginger Ale, Orange Crush, Root Beer, Gatorade",
+          "Only Pepsi and Diet Pepsi",
+          "Pepsi, Sprite, Coke, Orange Soda",
+          "Any fountain soda except Gatorade"
+        ],
+        answer: "Pepsi, Diet Pepsi, Starry, Mountain Dew, Ginger Ale, Orange Crush, Root Beer, Gatorade"
+      }
+    ];
+
+    const questionCounter = document.getElementById("questionCounter");
+    const scoreCounter = document.getElementById("scoreCounter");
+    const progressFill = document.getElementById("progressFill");
+    const questionText = document.getElementById("questionText");
+    const choicesContainer = document.getElementById("choicesContainer");
+    const feedback = document.getElementById("feedback");
+    const nextBtn = document.getElementById("nextBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const retakeBtn = document.getElementById("retakeBtn");
+    const quizCard = document.getElementById("quizCard");
+    const scoreCard = document.getElementById("scoreCard");
+    const scoreNumber = document.getElementById("scoreNumber");
+    const scoreCopy = document.getElementById("scoreCopy");
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function renderQuestion() {
+      const item = quizData[currentQuestion];
+      answered = false;
+      questionCounter.textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
+      scoreCounter.textContent = `Score: ${score}`;
+      progressFill.style.width = `${(currentQuestion / quizData.length) * 100}%`;
+      questionText.textContent = item.question;
+      feedback.textContent = "";
+      feedback.className = "quiz-feedback";
+      nextBtn.hidden = true;
+      choicesContainer.innerHTML = "";
+
+      item.choices.forEach((choice) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "choice-btn";
+        button.textContent = choice;
+        button.addEventListener("click", () => handleAnswer(button, choice));
+        choicesContainer.appendChild(button);
+      });
+    }
+
+    function handleAnswer(button, choice) {
+      if (answered) {
+        return;
+      }
+
+      answered = true;
+      const item = quizData[currentQuestion];
+      const buttons = choicesContainer.querySelectorAll(".choice-btn");
+      const isCorrect = choice === item.answer;
+
+      buttons.forEach((btn) => {
+        btn.disabled = true;
+        if (btn.textContent === item.answer) {
+          btn.classList.add("correct");
+        }
+      });
+
+      if (isCorrect) {
+        score += 1;
+        button.classList.add("correct");
+        feedback.textContent = "Correct.";
+        feedback.classList.add("correct");
+      } else {
+        button.classList.add("incorrect");
+        feedback.textContent = `Incorrect. Correct answer: ${item.answer}`;
+        feedback.classList.add("incorrect");
+      }
+
+      scoreCounter.textContent = `Score: ${score}`;
+      progressFill.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+      nextBtn.hidden = false;
+      nextBtn.textContent = currentQuestion === quizData.length - 1 ? "See Results" : "Next Question";
+    }
+
+    function showResults() {
+      const percent = Math.round((score / quizData.length) * 100);
+      const passed = percent >= 80;
+      quizCard.hidden = true;
+      scoreCard.hidden = false;
+      scoreNumber.textContent = `${percent}%`;
+      scoreNumber.className = `score-number ${passed ? "pass" : "fail"}`;
+      scoreCopy.textContent = passed
+        ? `Pass. You answered ${score} out of ${quizData.length} correctly and are ready for your first shift.`
+        : `Not passing yet. You answered ${score} out of ${quizData.length} correctly. Review the guide and retake the quiz.`;
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      quizCard.hidden = false;
+      scoreCard.hidden = true;
+      renderQuestion();
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentQuestion === quizData.length - 1) {
+        showResults();
+        return;
+      }
+
+      currentQuestion += 1;
+      renderQuestion();
+    });
+
+    restartBtn.addEventListener("click", restartQuiz);
+    retakeBtn.addEventListener("click", restartQuiz);
+
+    renderQuestion();
+  </script>
+</body>
+</html>
