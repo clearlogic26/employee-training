@@ -1315,23 +1315,36 @@
     const scoreNumber = document.getElementById("scoreNumber");
     const scoreCopy = document.getElementById("scoreCopy");
 
+    // Shuffle helper (Fisher-Yates)
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // Shuffle questions on load
+    let shuffledQuiz = shuffle(quizData);
     let currentQuestion = 0;
     let score = 0;
     let answered = false;
 
     function renderQuestion() {
-      const item = quizData[currentQuestion];
+      const item = shuffledQuiz[currentQuestion];
+      const shuffledChoices = shuffle(item.choices);
       answered = false;
-      questionCounter.textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
+      questionCounter.textContent = `Question ${currentQuestion + 1} of ${shuffledQuiz.length}`;
       scoreCounter.textContent = `Score: ${score}`;
-      progressFill.style.width = `${(currentQuestion / quizData.length) * 100}%`;
+      progressFill.style.width = `${(currentQuestion / shuffledQuiz.length) * 100}%`;
       questionText.textContent = item.question;
       feedback.textContent = "";
       feedback.className = "quiz-feedback";
       nextBtn.hidden = true;
       choicesContainer.innerHTML = "";
 
-      item.choices.forEach((choice) => {
+      shuffledChoices.forEach((choice) => {
         const button = document.createElement("button");
         button.type = "button";
         button.className = "choice-btn";
@@ -1347,7 +1360,7 @@
       }
 
       answered = true;
-      const item = quizData[currentQuestion];
+      const item = shuffledQuiz[currentQuestion];
       const buttons = choicesContainer.querySelectorAll(".choice-btn");
       const isCorrect = choice === item.answer;
 
@@ -1370,24 +1383,25 @@
       }
 
       scoreCounter.textContent = `Score: ${score}`;
-      progressFill.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+      progressFill.style.width = `${((currentQuestion + 1) / shuffledQuiz.length) * 100}%`;
       nextBtn.hidden = false;
-      nextBtn.textContent = currentQuestion === quizData.length - 1 ? "See Results" : "Next Question";
+      nextBtn.textContent = currentQuestion === shuffledQuiz.length - 1 ? "See Results" : "Next Question";
     }
 
     function showResults() {
-      const percent = Math.round((score / quizData.length) * 100);
+      const percent = Math.round((score / shuffledQuiz.length) * 100);
       const passed = percent >= 80;
       quizCard.hidden = true;
       scoreCard.hidden = false;
       scoreNumber.textContent = `${percent}%`;
       scoreNumber.className = `score-number ${passed ? "pass" : "fail"}`;
       scoreCopy.textContent = passed
-        ? `Pass. You answered ${score} out of ${quizData.length} correctly and are ready for your first shift.`
-        : `Not passing yet. You answered ${score} out of ${quizData.length} correctly. Review the guide and retake the quiz.`;
+        ? `Pass. You answered ${score} out of ${shuffledQuiz.length} correctly and are ready for your first shift.`
+        : `Not passing yet. You answered ${score} out of ${shuffledQuiz.length} correctly. Review the guide and retake the quiz.`;
     }
 
     function restartQuiz() {
+      shuffledQuiz = shuffle(quizData);
       currentQuestion = 0;
       score = 0;
       quizCard.hidden = false;
@@ -1396,7 +1410,7 @@
     }
 
     nextBtn.addEventListener("click", () => {
-      if (currentQuestion === quizData.length - 1) {
+      if (currentQuestion === shuffledQuiz.length - 1) {
         showResults();
         return;
       }
